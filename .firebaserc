@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nba-salary-cap": {
+      "hosting": {
+        "nba-salary-cap": [
+          "nba-salary-cap"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nba-salary-cap"
+  }
+}
