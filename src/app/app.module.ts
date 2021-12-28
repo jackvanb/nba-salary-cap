@@ -1,4 +1,5 @@
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import {
   AngularFireFunctionsModule,
   USE_EMULATOR,
@@ -28,6 +29,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireFunctionsModule,
+    AngularFireAnalyticsModule,
   ],
   providers: [
     {
