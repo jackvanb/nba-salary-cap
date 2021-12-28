@@ -40,7 +40,9 @@ export class CapTableComponent {
     this.dataSource.sort = this.sort;
     this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
     // Add default sort on cap space desc.
-    this.sort.sort({ id: 'capSpace', start: 'asc' } as MatSortable);
+    if (this.sort) {
+      this.sort.sort({ id: 'capSpace', start: 'asc' } as MatSortable);
+    }
   }
 
   // Custom sort to handle dollar values.
