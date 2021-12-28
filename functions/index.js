@@ -2,7 +2,13 @@ const cheerio = require("cheerio");
 const fetch = require("node-fetch");
 const functions = require("firebase-functions");
 
+let cachedCapSpace = null;
+
 exports.capSpace = functions.https.onCall(async (data, context) => {
+  if (cachedCapSpace != null) {
+    return cachedCapSpace;
+  }
+
   try {
     const response = await fetch("https://www.spotrac.com/nba/cap/");
     if (!response.ok) {
@@ -26,6 +32,7 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
         capSpace: capSpace,
       });
     });
+    cachedCapSpace = nbaCapSpace;
     return nbaCapSpace;
   } catch (error) {
     console.error(error);
