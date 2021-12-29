@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     MatTableModule,
     MatToolbarModule,
     MatSortModule,
+    MatProgressBarModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireFunctionsModule,

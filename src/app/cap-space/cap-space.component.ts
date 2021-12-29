@@ -15,15 +15,15 @@ export interface TeamCapSpace {
 })
 export class CapSpaceComponent {
   capSpace: TeamCapSpace[] = [];
+  isLoading = true;
 
-  constructor(private cloudFunctions: AngularFireFunctions) {}
-
-  ngOnInit(): void {
+  constructor(private cloudFunctions: AngularFireFunctions) {
     this.getCapSpace();
   }
 
   async getCapSpace(): Promise<void> {
     const callableCapSpace = this.cloudFunctions.httpsCallable('capSpace');
     this.capSpace = await callableCapSpace({}).toPromise();
+    this.isLoading = false;
   }
 }

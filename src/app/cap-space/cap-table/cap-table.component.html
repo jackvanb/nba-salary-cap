@@ -8,6 +8,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
     <td mat-cell *matCellDef="let row">
       <img
+        alt="{{ row.teamName }} logo"
         src="../../assets/{{ row.teamCode.toLowerCase() }}.jpg"
         height="48px"
       />
