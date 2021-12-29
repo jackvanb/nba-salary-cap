@@ -13,25 +13,7 @@ export class CapTableComponent {
   teamCapSpace: TeamCapSpace[] = [];
 
   dataSource!: MatTableDataSource<TeamCapSpace>;
-
-  columns = [
-    {
-      columnDef: 'teamName',
-      header: 'Team',
-      cell: (team: TeamCapSpace) => `${team.teamName}`,
-    },
-    {
-      columnDef: 'capSpace',
-      header: 'Cap Space',
-      cell: (team: TeamCapSpace) => `${team.capSpace}`,
-    },
-    {
-      columnDef: 'totalCap',
-      header: 'Total Cap',
-      cell: (team: TeamCapSpace) => `${team.totalCap}`,
-    },
-  ];
-  displayedColumns = this.columns.map((c) => c.columnDef);
+  displayedColumns = ['teamLogo', 'teamName', 'capSpace', 'totalCap'];
 
   @ViewChild(MatSort) sort!: MatSort;
 
