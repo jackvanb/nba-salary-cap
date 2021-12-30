@@ -18,9 +18,10 @@ import { AppComponent } from './app.component';
 import { CapTableComponent } from './cap-space/cap-table/cap-table.component';
 import { CapSpaceComponent } from './cap-space/cap-space.component';
 import { environment } from '../environments/environment';
+import { TeamCapComponent } from './team-cap/team-cap.component';
 
 @NgModule({
-  declarations: [AppComponent, CapTableComponent, CapSpaceComponent],
+  declarations: [AppComponent, CapTableComponent, CapSpaceComponent, TeamCapComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
