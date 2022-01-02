@@ -36,7 +36,6 @@ export class TeamCapComponent implements OnInit {
     this.teamCapSpace = await callableCapSpace({
       teamName: this.teamName,
     }).toPromise();
-    console.log(this.teamCapSpace);
     this.isLoading = false;
   }
 }
