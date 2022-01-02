@@ -15,7 +15,3 @@ $blue-gray-palette: mat.define-palette(mat.$blue-grey-palette);
   background-color: mat.get-color-from-palette($blue-gray-palette, "default");
   color: mat.get-color-from-palette($blue-gray-palette, "default-contrast");
 }
-
-a {
-  color: white;
-}

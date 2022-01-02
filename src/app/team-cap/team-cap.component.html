@@ -1,1 +1,19 @@
-<p>team-cap works!</p>
+<div class="container">
+  <img
+    alt="{{ teamName }} logo"
+    src="../../assets/{{ teamCode?.toLowerCase() }}.jpg"
+    height="80px"
+  />
+  <h1>{{ teamName }} Salary Cap 2021-2022</h1>
+  <p>
+    A look at the 2021-2022 salary cap and contract totals for the
+    {{ teamName }}.
+  </p>
+  <mat-progress-bar
+    aria-label="loading salary cap table"
+    color="primary"
+    mode="indeterminate"
+    *ngIf="isLoading"
+  ></mat-progress-bar>
+  <team-cap-table [teamCapSpace]="teamCapSpace"></team-cap-table>
+</div>

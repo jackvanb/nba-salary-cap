@@ -1,0 +1,37 @@
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8 cap-table"
+>
+  <ng-container matColumnDef="playerName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Player</th>
+    <td mat-cell *matCellDef="let row">
+      {{ row.playerName }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="salary">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
+    <td mat-cell *matCellDef="let row">
+      {{ row.salary }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="capFigure">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Cap Figure</th>
+    <td mat-cell *matCellDef="let row">
+      {{ row.capFigure }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="capPercentage">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Cap %</th>
+    <td mat-cell *matCellDef="let row">
+      {{ row.capPercentage }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
