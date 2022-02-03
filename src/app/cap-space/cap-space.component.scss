@@ -1,3 +1,11 @@
+@use "@angular/material" as mat;
+
+$pink-palette: mat.define-palette(mat.$pink-palette);
+
 .container {
   margin: 32px;
+}
+h1 {
+  border-bottom: 1px solid mat.get-color-from-palette($pink-palette, "darker");
+  padding-bottom: 8px;
 }
