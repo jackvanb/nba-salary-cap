@@ -1,14 +1,35 @@
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
 const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+
+// Get the date.
+const dateStr = new Date().toISOString().split("T")[0];
 
 let cachedCapSpace = null;
 
 exports.capSpace = functions.https.onCall(async (data, context) => {
+  // Read from local cache.
   if (cachedCapSpace != null) {
+    console.log("Read cap-space data from local cache.");
     return cachedCapSpace;
   }
 
+  // Read from DB.
+  const snapshot = await admin
+    .database()
+    .ref("cap-space")
+    .child(dateStr)
+    .once("value");
+  if (snapshot.val()) {
+    const nbaCapSpace = snapshot.val();
+    cachedCapSpace = nbaCapSpace;
+    console.log("Read cap-space data from db for date: " + dateStr);
+    return nbaCapSpace;
+  }
+
+  // If not present in local or db, fetch data.
   try {
     const response = await fetch("https://www.spotrac.com/nba/cap/");
     if (!response.ok) {
@@ -33,6 +54,9 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
       });
     });
     cachedCapSpace = nbaCapSpace;
+    // Write to DB.
+    await admin.database().ref("cap-space").child(dateStr).set(nbaCapSpace);
+    console.log("Saved cap-sapce data to db for date: " + dateStr);
     return nbaCapSpace;
   } catch (error) {
     console.error(error);
@@ -48,9 +72,26 @@ exports.teamCapSpace = functions.https.onCall(async (data, context) => {
   const teamUrlPath = data.teamName.replace(/\s+/g, "-").toLowerCase();
   const sportTracUrl = `https://www.spotrac.com/nba/${teamUrlPath}/cap/`;
 
+  // Read from local cache.
   if (cachedTeamCapSpace[teamUrlPath] != null) {
+    console.log(`Read ${teamUrlPath} data from local cache.`);
     return cachedTeamCapSpace[teamUrlPath];
   }
+
+  // Read from DB.
+  const snapshot = await admin
+    .database()
+    .ref(teamUrlPath)
+    .child(dateStr)
+    .once("value");
+  if (snapshot.val()) {
+    const teamCapSpace = snapshot.val();
+    cachedTeamCapSpace[teamUrlPath] = teamCapSpace;
+    console.log(`Read ${teamUrlPath} data from db for date: ${dateStr}`);
+    return teamCapSpace;
+  }
+
+  // If not present in local or db, fetch data.
   try {
     const response = await fetch(sportTracUrl);
     if (!response.ok) {
@@ -78,6 +119,9 @@ exports.teamCapSpace = functions.https.onCall(async (data, context) => {
       });
     });
     cachedTeamCapSpace[teamUrlPath] = teamCapSpace;
+    // Write to DB.
+    await admin.database().ref(teamUrlPath).child(dateStr).set(teamCapSpace);
+    console.log(`Saved ${teamUrlPath} data to db for date: ${dateStr}`);
     return teamCapSpace;
   } catch (error) {
     console.error(error);
