@@ -2,6 +2,10 @@
 
 $blue-gray-palette: mat.define-palette(mat.$blue-grey-palette);
 
+a {
+  color: white;
+}
+
 .cap-table {
   width: 100%;
 }
@@ -16,6 +20,9 @@ $blue-gray-palette: mat.define-palette(mat.$blue-grey-palette);
   color: mat.get-color-from-palette($blue-gray-palette, "default-contrast");
 }
 
-a {
-  color: white;
+@media only screen and (max-width: 600px) {
+  .mat-cell {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
 }

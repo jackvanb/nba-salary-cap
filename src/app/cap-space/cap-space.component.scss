@@ -5,6 +5,13 @@ $pink-palette: mat.define-palette(mat.$pink-palette);
 .container {
   margin: 32px;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 16px;
+  }
+}
+
 h1 {
   border-bottom: 1px solid mat.get-color-from-palette($pink-palette, "darker");
   padding-bottom: 8px;
