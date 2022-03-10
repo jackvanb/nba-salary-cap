@@ -1,5 +1,7 @@
 <mat-toolbar class="mat-elevation-z4" color="primary">
-  <img class="logo" alt="NBA logo" src="../assets/nba-logo-transparent.png" />
-  <span>NBA Salary Cap Tracker</span>
+  <a [routerLink]="['/']">
+    <img class="logo" alt="NBA logo" src="../assets/nba-logo-transparent.png" />
+    <span>NBA Salary Cap Tracker</span>
+  </a>
 </mat-toolbar>
 <router-outlet></router-outlet>
