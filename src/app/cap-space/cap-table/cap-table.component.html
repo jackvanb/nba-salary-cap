@@ -7,10 +7,7 @@
   <ng-container matColumnDef="teamLogo">
     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
     <td mat-cell *matCellDef="let row">
-      <a
-        [routerLink]="['/team']"
-        [queryParams]="{ team: row.teamName, teamCode: row.teamCode }"
-      >
+      <a [routerLink]="['/' + row.teamName.split(' ').pop().toLowerCase()]">
         <img
           alt="{{ row.teamName }} logo"
           src="../../assets/{{ row.teamCode.toLowerCase() }}.jpg"
@@ -23,11 +20,9 @@
   <ng-container matColumnDef="teamName">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
     <td mat-cell *matCellDef="let row">
-      <a
-        [routerLink]="['/team']"
-        [queryParams]="{ team: row.teamName, teamCode: row.teamCode }"
-        >{{ row.teamName }}</a
-      >
+      <a [routerLink]="['/' + row.teamName.split(' ').pop().toLowerCase()]">{{
+        row.teamName
+      }}</a>
     </td>
   </ng-container>
 

@@ -1,6 +1,7 @@
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 export interface PlayerCapSpace {
   playerName: string;
@@ -22,12 +23,19 @@ export class TeamCapComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cloudFunctions: AngularFireFunctions
+    private cloudFunctions: AngularFireFunctions,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit(): void {
-    this.teamName = this.route.snapshot.queryParamMap.get('team');
-    this.teamCode = this.route.snapshot.queryParamMap.get('teamCode');
+    this.teamName = this.route.snapshot.data['team'];
+    this.teamCode = this.route.snapshot.data['teamCode'];
+    this.title.setTitle(`${this.teamName} 2022-23 Salary Cap Table`);
+    this.meta.updateTag({
+      name: 'description',
+      content: `${this.teamName} 2022-23 salary cap table, including breakdowns of roster, salaries and cap figures.`,
+    });
     this.getTeamCapSpace();
   }
 
