@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nba-salary-cap",
+            "outputPath": "dist/nba-salary-cap/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -107,11 +107,68 @@
           "builder": "@angular/fire:deploy",
           "options": {
             "prerender": false,
-            "ssr": false,
+            "ssr": true,
             "browserTarget": "nba-salary-cap:build:production",
             "firebaseProject": "nba-salary-cap",
             "firebaseHostingSite": "nba-salary-cap"
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/nba-salary-cap/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "nba-salary-cap:build:development",
+              "serverTarget": "nba-salary-cap:server:development"
+            },
+            "production": {
+              "browserTarget": "nba-salary-cap:build:production",
+              "serverTarget": "nba-salary-cap:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nba-salary-cap:build:production",
+              "serverTarget": "nba-salary-cap:server:production"
+            },
+            "development": {
+              "browserTarget": "nba-salary-cap:build:development",
+              "serverTarget": "nba-salary-cap:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

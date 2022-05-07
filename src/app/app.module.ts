@@ -24,7 +24,7 @@ import { TeamCapTableComponent } from './team-cap/team-cap-table/team-cap-table.
 @NgModule({
   declarations: [AppComponent, CapTableComponent, CapSpaceComponent, TeamCapComponent, TeamCapTableComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     MatTableModule,
     MatToolbarModule,
