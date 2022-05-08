@@ -22,16 +22,16 @@ export class CapSpaceComponent implements OnInit {
     private cloudFunctions: AngularFireFunctions,
     private title: Title,
     private meta: Meta
-  ) {
-    this.getCapSpace();
-  }
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle(`NBA Salary Cap and Contracts Tracker`);
     this.meta.updateTag({
       name: 'description',
       content:
         'A real-time look at the salary cap space and salary cap totals for each NBA team.',
     });
+    this.getCapSpace();
   }
 
   async getCapSpace(): Promise<void> {
