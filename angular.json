@@ -106,7 +106,7 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
+            "prerender": true,
             "ssr": true,
             "browserTarget": "nba-salary-cap:build:production",
             "firebaseProject": "nba-salary-cap",
@@ -156,7 +156,39 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": ["/"]
+            "routes": [
+              "/",
+              "/hawks",
+              "/nets",
+              "/celtics",
+              "/hornets",
+              "/bulls",
+              "/cavaliers",
+              "/mavericks",
+              "/nuggets",
+              "/pistons",
+              "/warriors",
+              "/rockets",
+              "/pacers",
+              "/clippers",
+              "/lakers",
+              "/grizzlies",
+              "/heat",
+              "/bucks",
+              "/timberwolves",
+              "/pelicans",
+              "/knicks",
+              "/thunder",
+              "/magic",
+              "/76ers",
+              "/suns",
+              "/trailblazers",
+              "/kings",
+              "/spurs",
+              "/raptors",
+              "/jazz",
+              "/wizards"
+            ]
           },
           "configurations": {
             "production": {
