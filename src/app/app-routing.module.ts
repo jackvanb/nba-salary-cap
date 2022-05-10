@@ -102,7 +102,7 @@ const routes: Routes = [
   {
     path: 'knicks',
     component: TeamCapComponent,
-    data: { team: 'New York Nicks', teamCode: 'NYK' },
+    data: { team: 'New York Knicks', teamCode: 'NYK' },
   },
   {
     path: 'thunder',
@@ -125,9 +125,9 @@ const routes: Routes = [
     data: { team: 'Phoenix Suns', teamCode: 'PHX' },
   },
   {
-    path: 'trailblazers',
+    path: 'blazers',
     component: TeamCapComponent,
-    data: { team: 'Portland Trailblazers', teamCode: 'POR' },
+    data: { team: 'Portland Trail Blazers', teamCode: 'POR' },
   },
   {
     path: 'kings',
@@ -161,9 +161,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabledBlocking',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
