@@ -1,27 +1,33 @@
-# NbaSalaryCap
+# NBA Salary Cap Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+AngularTS app to view the salary cap totals and contracts for NBA teams.
+
+## SSR / Prerender Routes
+
+The app uses [Angular Universal](https://angular.io/guide/universal) for server-side rendering and prerendered routes.
+
+## Firebase
+
+Firebase functions, hosting, and database are used for NBA Salary Cap Tracker.
+
+Run `npm prerender && firebase emulators:start` to bring up the emulators for functions and hosting. The frontend will automatically request the cloud functions at the correct localhost location.
+
+NOTE: The functions emulator will be talking to the production database.
+
+Run `firebase deploy` to deploy to the Firebase production app.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm prerender && npm run serve:ssr` for a dev server (not using Firebase). Navigate to `http://localhost:4000/`.
+
+NOTE: The server will be talking to the production database.
+
+The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
