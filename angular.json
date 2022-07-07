@@ -32,6 +32,7 @@
             "assets": [
               "src/favicon.ico",
               "src/sitemap.xml",
+              "src/teams.xml",
               "src/robots.txt",
               "src/assets"
             ],
