@@ -10,7 +10,9 @@
     "dev:ssr": "ng run nba-salary-cap:serve-ssr",
     "serve:ssr": "node dist/nba-salary-cap/server/main.js",
     "build:ssr": "ng build && ng run nba-salary-cap:server",
-    "prerender": "ng run nba-salary-cap:prerender"
+    "prerender": "ng run nba-salary-cap:prerender",
+    "prerender:dev": "ng run nba-salary-cap:prerender --configuration development && npm run serve:ssr",
+    "clean": "rm -f dist"
   },
   "private": true,
   "dependencies": {

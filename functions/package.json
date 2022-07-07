@@ -8,7 +8,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "build": "node cp-angular",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "clean": "rm -f dist"
   },
   "engines": {
     "node": "16"
