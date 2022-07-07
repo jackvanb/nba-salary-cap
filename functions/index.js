@@ -48,8 +48,8 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
       const row = $(element).find("td");
       const teamName = $(row[1]).find(".xs-hide").text();
       const teamCode = $(row[1]).find(".visible-xs").text();
-      const totalCap = $(row[8]).text();
-      const capSpace = $(row[9]).text();
+      const totalCap = $(row[7]).text();
+      const capSpace = $(row[8]).text();
       nbaCapSpace.push({
         teamCode: teamCode,
         teamName: teamName,
