@@ -105,8 +105,9 @@ exports.teamCapSpace = functions.https.onCall(async (data, context) => {
     const html = await response.text();
     const $ = cheerio.load(html);
     const teamCapSpace = [];
-    // Loop through the first table only.
-    const firstTable = $("body").find("table")[0];
+    // Find the first table within the 'teams' class.
+    // This prevents parsing the 'Pending Transaction' table if it is present.
+    const firstTable = $("body").find(".teams table")[0];
     const cheerioFirstTable = $(firstTable).find("tbody > tr");
 
     cheerioFirstTable.each((index, element) => {
