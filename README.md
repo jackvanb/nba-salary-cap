@@ -10,7 +10,7 @@ The app uses [Angular Universal](https://angular.io/guide/universal) for server-
 
 Firebase functions, hosting, and database are used for NBA Salary Cap Tracker.
 
-Run `npm prerender && firebase emulators:start` to bring up the emulators for functions and hosting. The frontend will automatically request the cloud functions at the correct localhost location.
+Run `npm run prerender && firebase emulators:start` to bring up the emulators for functions and hosting. The frontend will automatically request the cloud functions at the correct localhost location.
 
 NOTE: The functions emulator will be talking to the production database.
 
@@ -18,7 +18,7 @@ Run `firebase deploy` to deploy to the Firebase production app.
 
 ## Development server
 
-Run `npm prerender && npm run serve:ssr` for a dev server (not using Firebase). Navigate to `http://localhost:4000/`.
+Run `npm run prerender && npm run serve:ssr` for a dev server (not using Firebase). Navigate to `http://localhost:4000/`.
 
 NOTE: The server will be talking to the production database.
 
