@@ -36,7 +36,8 @@
         "source": "**",
         "function": "ssr"
       }
-    ]
+    ],
+    "predeploy": ["npm run prerender"]
   },
   "functions": {
     "predeploy": [
