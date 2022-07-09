@@ -2,7 +2,7 @@ const cheerio = require("cheerio");
 const fetch = require("node-fetch");
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const universal = require("./dist/nba-salary-cap/server/main.js").app();
+const universal = require("./server/main.js").app();
 admin.initializeApp();
 
 /* SSR rendering route used for Firebase Hosting */
