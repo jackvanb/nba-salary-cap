@@ -41,6 +41,8 @@
   },
   "functions": {
     "predeploy": [
+      "npm run clean",
+      "npm run prerender",
       "npm --prefix ./functions/ run lint",
       "npm --prefix ./functions/ run build"
     ],

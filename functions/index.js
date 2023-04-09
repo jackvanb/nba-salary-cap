@@ -43,13 +43,29 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
     const html = await response.text();
     const $ = cheerio.load(html);
     const nbaCapSpace = [];
+    let teamNameIndex;
+    let totalCapIndex;
+    let capSpaceIndex;
+    // Loop through table headers to find correct column for values.
+    $("table > thead > tr > th").each((index, element) => {
+      if ($(element).text().toLocaleLowerCase().includes("team")) {
+        teamNameIndex = index;
+      } else if ($(element).text().toLocaleLowerCase().includes("total cap")) {
+        totalCapIndex = index;
+      } else if (
+        $(element).text().toLocaleLowerCase().includes("cap space") &&
+        !$(element).text().toLocaleLowerCase().includes("projected")
+      ) {
+        capSpaceIndex = index;
+      }
+    });
     // Loop through each team.
     $("table > tbody > tr").each((index, element) => {
       const row = $(element).find("td");
-      const teamName = $(row[1]).find(".xs-hide").text();
-      const teamCode = $(row[1]).find(".visible-xs").text();
-      const totalCap = $(row[7]).text();
-      const capSpace = $(row[8]).text();
+      const teamName = $(row[teamNameIndex]).find(".xs-hide").text();
+      const teamCode = $(row[teamNameIndex]).find(".visible-xs").text();
+      const totalCap = $(row[totalCapIndex]).text();
+      const capSpace = $(row[capSpaceIndex]).text();
       nbaCapSpace.push({
         teamCode: teamCode,
         teamName: teamName,
