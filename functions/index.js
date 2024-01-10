@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const universal = require("./server/main.js").app();
+
 admin.initializeApp();
 
 /* SSR rendering route used for Firebase Hosting */
@@ -53,7 +54,7 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
       } else if ($(element).text().toLocaleLowerCase().includes("total cap")) {
         totalCapIndex = index;
       } else if (
-        $(element).text().toLocaleLowerCase().includes("cap space") &&
+        $(element).text().toLocaleLowerCase().startsWith("cap space") &&
         !$(element).text().toLocaleLowerCase().includes("projected")
       ) {
         capSpaceIndex = index;
@@ -62,12 +63,10 @@ exports.capSpace = functions.https.onCall(async (data, context) => {
     // Loop through each team.
     $("table > tbody > tr").each((index, element) => {
       const row = $(element).find("td");
-      const teamName = $(row[teamNameIndex]).find(".xs-hide").text();
-      const teamCode = $(row[teamNameIndex]).find(".visible-xs").text();
-      const totalCap = $(row[totalCapIndex]).text();
-      const capSpace = $(row[capSpaceIndex]).text();
+      const teamName = $(row[teamNameIndex]).text().trim();
+      const totalCap = $(row[totalCapIndex]).text().trim();
+      const capSpace = $(row[capSpaceIndex]).text().trim();
       nbaCapSpace.push({
-        teamCode: teamCode,
         teamName: teamName,
         totalCap: totalCap,
         capSpace: capSpace,

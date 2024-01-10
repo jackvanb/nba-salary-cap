@@ -9,7 +9,7 @@
     "deploy": "firebase deploy --only functions",
     "build": "node cp-angular",
     "logs": "firebase functions:log",
-    "clean": "rm -f dist"
+    "clean": "rm -rf dist"
   },
   "engines": {
     "node": "16"

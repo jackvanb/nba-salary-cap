@@ -1,9 +1,12 @@
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { firstValueFrom } from 'rxjs';
+
+import { teamNameToCode } from '../shared/constants';
 
 export interface TeamCapSpace {
-  teamCode: string;
+  teamCode?: string;
   teamName: string;
   totalCap: string;
   capSpace: string;
@@ -36,7 +39,13 @@ export class CapSpaceComponent implements OnInit {
 
   async getCapSpace(): Promise<void> {
     const callableCapSpace = this.cloudFunctions.httpsCallable('capSpace');
-    this.capSpace = await callableCapSpace({}).toPromise();
+    this.capSpace = await firstValueFrom(callableCapSpace({}));
+    // Set team code if not present.
+    for (const team of this.capSpace) {
+      if (!team.teamCode) {
+        team.teamCode = teamNameToCode.get(team.teamName);
+      }
+    }
     this.isLoading = false;
   }
 }

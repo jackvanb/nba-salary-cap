@@ -12,7 +12,7 @@
     "build:ssr": "ng build && ng run nba-salary-cap:server",
     "prerender": "ng run nba-salary-cap:prerender",
     "dev": "ng run nba-salary-cap:prerender --configuration development",
-    "clean": "rm -f dist"
+    "clean": "rm -rf dist"
   },
   "private": true,
   "dependencies": {
