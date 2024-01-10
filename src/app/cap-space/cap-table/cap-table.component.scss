@@ -10,6 +10,10 @@ a {
   width: 100%;
 }
 
+.mat-column-teamLogo {
+  width: 75px;
+}
+
 .mat-row:nth-child(even) {
   background-color: mat.get-color-from-palette($blue-gray-palette, "darker");
   color: mat.get-color-from-palette($blue-gray-palette, "darker-contrast");

@@ -14,6 +14,8 @@ export const teamNameToCode = new Map<string, string>([
   ['Golden State Warriors', 'GSW'],
   ['Houston Rockets', 'HOU'],
   ['Indiana Pacers', 'IND'],
+  // Clippers are represented using both.
+  ['LA Clippers', 'LAC'],
   ['Los Angeles Clippers', 'LAC'],
   ['Los Angeles Lakers', 'LAL'],
   ['Memphis Grizzlies', 'MEM'],
