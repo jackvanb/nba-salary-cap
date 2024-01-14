@@ -67,7 +67,7 @@ const routes: Routes = [
   {
     path: 'clippers',
     component: TeamCapComponent,
-    data: { team: 'Los Angeles Clippers', teamCode: 'LAC' },
+    data: { team: 'LA Clippers', teamCode: 'LAC' },
   },
   {
     path: 'lakers',

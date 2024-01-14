@@ -31,10 +31,10 @@ export class TeamCapComponent implements OnInit {
   ngOnInit(): void {
     this.teamName = this.route.snapshot.data['team'];
     this.teamCode = this.route.snapshot.data['teamCode'];
-    this.title.setTitle(`${this.teamName} 2022-23 Salary Cap Table`);
+    this.title.setTitle(`${this.teamName} 2023-24 Salary Cap Table`);
     this.meta.updateTag({
       name: 'description',
-      content: `${this.teamName} 2022-23 salary cap table, including breakdowns of roster, salaries and cap figures.`,
+      content: `${this.teamName} 2023-24 salary cap table, including breakdowns of roster, salaries and cap figures.`,
     });
     this.getTeamCapSpace();
   }
